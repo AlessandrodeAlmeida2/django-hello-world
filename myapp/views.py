@@ -21,17 +21,21 @@ def read_view(request):
     return render(request, 'myapp/read_template.html', {'objects': objects})
 
 def update_view(request, pk):
+    obj = MyModel.objects.get(pk=pk)
     if request.method == "POST":
         name = request.POST.get('name')
         description = request.POST.get('description')
-        obj = MyModel.objects.get(pk=pk)
         obj.name = name
         obj.description = description
         obj.save()
-        return redirect('read_view')
+        return redirect('read')
+    elif request.method == "GET":
+        return render(request, 'myapp/update_template.html', {'object': obj})
+    else:
+        return HttpResponse('Método HTTP não permitido', status=405)
 
 def delete_view(request, pk):
     if request.method == "POST":
         obj = MyModel.objects.get(pk=pk)
         obj.delete()
-        return redirect('read_view')
+        return redirect('read')
