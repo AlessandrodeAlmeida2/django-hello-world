@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
     <title>Lista de Objetos</title>
   </head>
   <body>
     <h1>Lista de Objetos</h1>
     <ul>
       {% for object in objects %}
-      <li>{{ object.name }}: {{ object.description }}</li>
+      <li>
+        {{ object.name }}: {{ object.description }}
+        <img src="{{ object.photo.url }}" alt="img">
+        <form action="{% url 'update' object.pk %}" method="GET">
+          <input type="submit" value="Atualizar">
+        </form>
+        <form action="{% url 'delete' object.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="Deletar">
+        </form>
+      </li>
       {% endfor %}
     </ul>
   </body>

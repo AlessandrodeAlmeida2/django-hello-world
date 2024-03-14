@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <title>Atualizar Objeto</title>
+  </head>
+  <body>
+    <h1>Atualizar Objeto</h1>
+    <form action="{% url 'update' object.pk %}" method="POST">
+      {% csrf_token %}
+      <label for="name">Nome:</label><br>
+      <input type="text" id="name" name="name" value="{{ object.name }}"><br>
+
+      <label for="description">Descrição:</label><br>
+      <input type="text" id="description" name="description" value="{{ object.description }}"><br>
+
+      <img src="{{ object.photo.url }}" alt="img">
+
+      <label for="photo">Foto:</label>
+      <input type="file" id="photo" name="photo" accept="image/*"><br /><br />
+      <input type="submit" value="Atualizar">
+    </form>
+  </body>
+</html>

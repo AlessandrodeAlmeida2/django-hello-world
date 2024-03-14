@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
     <title>Criar Objeto</title>
   </head>
   <body>
     <h1>Criar Objeto</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <label for="name">Nome:</label>
       <input type="text" id="name" name="name" required /><br /><br />
 
       <label for="description">Descrição:</label>
-      <textarea id="description" name="description" required></textarea
-      ><br /><br />
+      <textarea id="description" name="description" required></textarea><br /><br />
 
-      <button type="submit">Criar</button>
+      <label for="photo">Foto:</label>
+      <input type="file" id="photo" name="photo" accept="image/*"><br /><br />
+
+      <input type="submit" value="Criar">
     </form>
   </body>
 </html>
