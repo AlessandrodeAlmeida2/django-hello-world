@@ -43,3 +43,27 @@ input[type="submit"] {
     color: white;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    div.container {
+        margin-top: 200px;
+    }
+
+    form {
+        width: 80%;
+    }
+
+    label {
+        font-size: 18px;
+    }
+    
+    input[type="text"], input[type="submit"] {
+        font-size: 25px;
+        padding: 18px;
+    }
+
+    li {
+        font-size: 25px;
+        padding: 18px;
+    }
+}
