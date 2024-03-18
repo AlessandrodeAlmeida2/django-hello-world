@@ -45,7 +45,7 @@ input[type="submit"] {
 }
 
 @media screen and (max-width: 600px) {
-    .container {
+    div.container {
         margin-top: 200px;
     }
 
